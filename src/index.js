@@ -89,7 +89,7 @@ function displayTemperature(response) {
               <img src="${day.condition.icon_url}" alt="${day.condition.description}" />
             </div>
             <div class="forecast-temperature">
-              <strong>${Math.round(day.temperature.maximum)}℃</strong> / ${Math.round(day.temperature.minimum)}℃
+              <strong>${Math.round(day.temperature.maximum)}℃</strong>  / ${Math.round(day.temperature.minimum)}℃
             </div>
           </div>
         `;
