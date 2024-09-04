@@ -32,13 +32,16 @@ function displayTemperature(response) {
   
     if (city) {
       const apiKey = "0fd2f6d04c480da7a695db3eo9b870t6";
-      const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+      const currentWeatherUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+      const forecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   
-      axios.get(apiUrl).then(displayTemperature).catch(handleError);
+      axios.get(currentWeatherUrl).then(displayTemperature).catch(handleError);
+      axios.get(forecastUrl).then(displayForecast).catch(handleError);
     } else {
       alert("Please enter a city name.");
     }
   }
+  
   
   function formatDate(date) {
     const minutes = date.getMinutes().toString().padStart(2, '0');
@@ -65,27 +68,35 @@ function displayTemperature(response) {
   
   currentDateElement.textContent = formatDate(currentDate);
 
+
+ 
   function displayForecast(response) {
     let forecastElement = document.querySelector("#forecast");
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let forecast = response.data.daily;
+  
     let forecastHTML = "<div class='weather-forecast'>";
   
-    
-    days.forEach(function(day) {
+    forecast.forEach(function(day, index) {
+      if (index < 5) { 
+        let date = new Date(day.time * 1000);
+        let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        let dayName = days[date.getDay()];
+  
         forecastHTML += `
           <div class="forecast-day">
-         <div class="forecast-date">${day}</div>
-         <div class="forecast-icon">⛅</div>
-         <div class="forecast-temperatures">
-         <div class="forecast-temperature">
-         <strong>15℃ </strong>
-         </div><br />
-         <div class="forecast-temperature">9℃</div>
-         </div>
-         </div>
+            <div class="forecast-date">${dayName}</div>
+            <div class="forecast-icon">
+              <img src="${day.condition.icon_url}" alt="${day.condition.description}" />
+            </div>
+            <div class="forecast-temperature">
+              <strong>${Math.round(day.temperature.maximum)}℃</strong> / ${Math.round(day.temperature.minimum)}℃
+            </div>
+          </div>
         `;
+      }
     });
+  
     forecastHTML += "</div>";
     forecastElement.innerHTML = forecastHTML;
   }
-  displayForecast();
+  

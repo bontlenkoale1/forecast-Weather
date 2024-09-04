@@ -28,7 +28,7 @@ body {
   
   a:hover,
   a:focus {
-    color: #6123cc;
+    color: #f3f1f3;
     outline: none;
   }
   header {
@@ -127,8 +127,7 @@ body {
    text-align: center;
   }
   .forecast-temperatures{
-    text-align: center;
-    color: #DD839D;
+    text-align: center; 
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -139,4 +138,7 @@ body {
   }
   .forecast-temperature{
     padding: 0 10px;
+  }
+  .forecast-temperature{
+    color: #f1ecee;
   }
