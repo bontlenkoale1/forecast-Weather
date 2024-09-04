@@ -115,3 +115,41 @@ body {
     width: 80px; 
     height: auto;
   }
+  .forecast {
+    margin-top: 30px;
+  }
+  
+  .forecast-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .forecast-day {
+    text-align: center;
+  }
+  
+  .forecast-day h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .forecast-day img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .forecast-temperature {
+    font-size: 16px;
+  }
+  
+  .forecast-temperature-max {
+    font-weight: bold;
+    color: #dd849f;
+  }
+  
+  .forecast-temperature-min {
+    color: #ffffff;
+  }
+  
