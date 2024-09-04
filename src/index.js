@@ -14,8 +14,8 @@ function displayTemperature(response) {
   
     cityElement.textContent = response.data.city;
     temperatureElement.textContent = temperature;
-    humidityElement.textContent = ${humidity}%;
-    windElement.textContent = ${windSpeed} m/s;
+    humidityElement.textContent = `${humidity}%`;
+    windElement.textContent = `${windSpeed} m/s`;
     descriptionElement.textContent = description;
     iconElement.src = iconUrl; 
   }
@@ -32,7 +32,7 @@ function displayTemperature(response) {
   
     if (city) {
       const apiKey = "0fd2f6d04c480da7a695db3eo9b870t6";
-      const apiUrl = https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric;
+      const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   
       axios.get(apiUrl).then(displayTemperature).catch(handleError);
     } else {
@@ -54,7 +54,7 @@ function displayTemperature(response) {
     ];
     const formattedDay = days[date.getDay()];
   
-    return ${formattedDay} ${hours}:${minutes};
+    return `${formattedDay} ${hours}:${minutes}`;
   }
   
   const searchForm = document.querySelector("#search-form");
@@ -64,4 +64,3 @@ function displayTemperature(response) {
   const currentDate = new Date();
   
   currentDateElement.textContent = formatDate(currentDate);
-  
