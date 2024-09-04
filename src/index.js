@@ -64,3 +64,28 @@ function displayTemperature(response) {
   const currentDate = new Date();
   
   currentDateElement.textContent = formatDate(currentDate);
+
+  function displayForecast(response) {
+    let forecastElement = document.querySelector("#forecast");
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let forecastHTML = "<div class='weather-forecast'>";
+  
+    
+    days.forEach(function(day) {
+        forecastHTML += `
+          <div class="forecast-day">
+         <div class="forecast-date">${day}</div>
+         <div class="forecast-icon">⛅</div>
+         <div class="forecast-temperatures">
+         <div class="forecast-temperature">
+         <strong>15℃ </strong>
+         </div><br />
+         <div class="forecast-temperature">9℃</div>
+         </div>
+         </div>
+        `;
+    });
+    forecastHTML += "</div>";
+    forecastElement.innerHTML = forecastHTML;
+  }
+  displayForecast();
